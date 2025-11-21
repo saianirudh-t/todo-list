@@ -1,0 +1,29 @@
+*{
+    margin:0px 5px;
+    padding:0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  margin-top:10px;
+  gap:20px;
+}
+
+.task{
+  display:flex;
+  border:2px solid grey;
+  width:300px;
+  justify-content:space-between;
+  gap:20px;
+}
+.task p{
+  width:80%;
+  
+}
+
+
