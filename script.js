@@ -69,20 +69,19 @@ window.addEventListener("load", () => {
     })
     updateCompletedCount() 
 })
-
+let main=document.querySelector(".main")
+let msg=document.createElement('p')
+msg.innerHTML=`<p style="color:red;">Task already exists</p>`
+msg.style.display="none"
+main.insertBefore(msg,sub)
 sub.addEventListener('click', () => {
     let inp = document.querySelector("#task");
     let task = inp.value.trim()
-    let p=document.createElement('p')
-    p.innerHTML=`<p style="color:red;">Task already exists</p>`
-    p.style.display="none"
-    inp.after(p)
     if (task === "") return;
-
     if (arr.some(item => item.entered === task)) {
-        p.style.display="block"
+        msg.style.display="block"
         setTimeout(() => {
-            p.style.display="none"
+            msg.style.display="none"
         }, 1500);
         return;
     }
