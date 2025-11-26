@@ -11,6 +11,11 @@ function updateCompletedCount() {
     totalTasks.innerText=arr.length
 }
 
+function progressBar(){
+    let done=document.querySelector(".done")
+    let bar=taskDone/totalTasks;
+    done.style.width=`${bar}%`
+}
 function saveToLocal() {
     localStorage.setItem("tasks", JSON.stringify(arr))
 }

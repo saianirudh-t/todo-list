@@ -31,8 +31,6 @@ body {
     width: 100%;
     text-align: center;
 }
-
-/* Heading */
 .main h2 {
     margin-bottom: 20px;
     font-weight: 600;
@@ -43,16 +41,17 @@ body {
     height: 150px;
     background: green;
     border-radius: 50%;
-    margin: 20px auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
+    gap:14px;
     justify-content: center;
     position: relative;
+    margin: 10px 50%;
+    transform: translateX(-50%);
 }
 
 .display p {
-    margin:0px;
     font-size: 40px;
     color: white;
 }
@@ -63,9 +62,24 @@ body {
     background: white;
     display: block;
     transform: rotate(-45deg);
-    margin: 10px 0; 
 }
-
+.progress{
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    gap:10px;
+}
+.progressbar{
+    border:1px solid grey;
+    border-radius:10px;
+    height:10px;
+    width:300px;
+}
+.done{
+    background-color:green;
+    height:100%;
+    width:100%;
+}
 #task {
     width: 100%;
     padding: 12px 14px;
@@ -81,7 +95,6 @@ body {
     outline: none;
 }
 
-/* Submit button */
 #sub {
     width: 100%;
     padding: 12px;
@@ -98,7 +111,6 @@ body {
     background: #2f6ff0;
 }
 
-/* Task style */
 .task {
     display: flex;
     align-items: center;
