@@ -100,8 +100,7 @@ window.addEventListener("load", () => {
 
 let box1 = document.querySelector(".box1")
 let msg = document.createElement('p')
-
-msg.innerHTML = `<p style="color:red;">Task already exists</p>`
+let ind=0
 msg.style.display = "none"
 
 box1.after(msg)
@@ -117,8 +116,9 @@ function takeValue() {
   let task = inp.value.trim()
 
   if (task === "") return
-
-  if (arr.some(item => item.entered === task)) {
+  ind=arr.findIndex(item=>item.entered==task)
+  if (ind!=-1) {
+    msg.innerHTML = `<p style="color:red;">Task already exists at position ${ind+1} </p>`
     msg.style.display = "block"
     setTimeout(() => msg.style.display = "none", 1500)
     return
@@ -137,20 +137,42 @@ function takeValue() {
 let clearAllBtn = document.getElementById("clearAll")
 let clearCompletedBtn = document.getElementById("clearCompleted")
 
+let msg1=document.createElement('p')
+let progress = document.querySelector(".progress")
+progress.before(msg1)
+msg1.style.display="none"
 clearAllBtn.addEventListener("click", () => {
-  document.querySelectorAll(".task").forEach(div => div.remove())
-  arr = []
-  saveToLocal()
-  updateCompletedCount()
-  progressBar()
+    if(arr.length!=0){
+        msg1.innerHTML=`<p style="color:red">Total ${arr.length} tasks got removed`
+    }
+    else{
+        msg1.innerHTML=`<p style="color:red">There is no tasks to remove`
+    }
+    msg1.style.display="block"
+    setTimeout(() => msg1.style.display = "none", 1500)
+    document.querySelectorAll(".task").forEach(div => div.remove())
+    arr = []
+    saveToLocal()
+    updateCompletedCount()
+    progressBar()
 })
 
 clearCompletedBtn.addEventListener("click", () => {
-  document.querySelectorAll(".task").forEach(div => {
+    let completedTasks=arr.filter(task=>task.completed)
+    if (completedTasks.length!=0){
+        msg1.innerHTML=`<p style="color:red";>Total ${completedTasks.length}tasks got removed</p>`
+    }
+    else{
+        msg1.innerHTML=`<p style="color:red">There is no tasks to remove`
+    }
+    msg1.style.display="block"
+    setTimeout(() => msg1.style.display = "none", 1500)
+    document.querySelectorAll(".task").forEach(div => {
     let checkbox = div.querySelector("input[type='checkbox']")
-    if (checkbox.checked) div.remove()
+    if (checkbox.checked){
+    div.remove()
+    }
   })
-
   arr = arr.filter(task => !task.completed)
 
   saveToLocal()

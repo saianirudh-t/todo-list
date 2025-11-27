@@ -22,7 +22,7 @@ body {
 .main {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 20px;
+  row-gap: 15px;
   background: #ffffff;
   padding: 28px 22px;
   border-radius: 16px;
